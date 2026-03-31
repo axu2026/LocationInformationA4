@@ -32,7 +32,11 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.google.maps.android.compose.*
 import android.location.Geocoder
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -183,13 +187,25 @@ fun MapScreen(location: Location) {
             Marker(
                 state = MarkerState(position = coordinates),
                 title = "Your Location",
-                snippet = stringAddress
+                snippet = "${location.latitude}, ${location.longitude}"
             )
             customMarkers.forEach { marker ->
                 Marker(
                     state = MarkerState(position = marker),
-                    title = "Custom Marker"
+                    title = "Custom Marker",
+                    snippet = "${marker.latitude}, ${marker.longitude}"
                 )
+            }
+        }
+        Card(
+            modifier = Modifier.padding(8.dp),
+        ) {
+            Column(
+                modifier = Modifier.padding(8.dp),
+            ) {
+                Text(text = "Address Information:", fontWeight = FontWeight.Bold)
+                Text(text = stringAddress)
+                Text(text = "${location.latitude}, ${location.longitude}")
             }
         }
     }
