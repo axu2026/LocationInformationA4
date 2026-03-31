@@ -5,8 +5,8 @@ This app is a demonstration of the Google map component for Android, as well as 
 This was tested with my own Google Cloud API key. It has been removed here, but place your own in the AndroidManifest.xml file.
 
 <img width="575" height="889" alt="Screenshot 2026-03-30 223152" src="https://github.com/user-attachments/assets/4054d3ce-cdf3-4363-923c-b7dc2acd3779" />
-<img width="637" height="857" alt="Screenshot 2026-03-30 222734" src="https://github.com/user-attachments/assets/b8df330c-035e-4b15-806a-2914a57d87ee" />
-<img width="641" height="905" alt="Screenshot 2026-03-30 222717" src="https://github.com/user-attachments/assets/d8641886-29d3-4189-971a-dd97819117b7" />
+<img width="576" height="900" alt="Screenshot 2026-03-30 225744" src="https://github.com/user-attachments/assets/44480892-6fb1-4e35-93dd-e25c27c737db" />
+<img width="573" height="837" alt="Screenshot 2026-03-30 225729" src="https://github.com/user-attachments/assets/3e11f579-79a9-4cae-9230-712ffe6b3271" />
 
 # AI Disclosure
 
