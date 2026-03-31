@@ -147,6 +147,8 @@ fun RequestPermissions(
 @Composable
 fun MapScreen(location: Location) {
     val context = LocalContext.current
+
+    // create coordinates from user location
     val coordinates = LatLng(location.latitude, location.longitude)
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.Builder()
@@ -165,10 +167,13 @@ fun MapScreen(location: Location) {
         mutableStateOf(MapUiSettings(zoomControlsEnabled = false))
     }
 
+    // the geocode address and its stringified version
     var rGeocodeAddress by remember { mutableStateOf<Address?>(null) }
     var stringAddress by remember { mutableStateOf("") }
+    // list of custom markers made by the user
     val customMarkers = remember { mutableStateListOf<LatLng>() }
 
+    // create the string address to be displayed as info
     LaunchedEffect(location) {
         rGeocodeAddress = reverseGeocode(context, location.latitude, location.longitude)
         stringAddress = formatAddress(rGeocodeAddress)
@@ -211,6 +216,7 @@ fun MapScreen(location: Location) {
     }
 }
 
+// function to obtain the reverse geocode
 suspend fun reverseGeocode(context: Context, lat: Double, lon: Double): Address? =
     withContext(Dispatchers.IO) {
         val geocoder = Geocoder(context)
@@ -227,6 +233,7 @@ suspend fun reverseGeocode(context: Context, lat: Double, lon: Double): Address?
         }
     }
 
+// function turning the result of the reverse geocode into string version of address
 fun formatAddress(address: Address?): String {
     return address?.let {
         val addressLines = (0..it.maxAddressLineIndex).mapNotNull { i ->
